@@ -1,8 +1,23 @@
 # CodexBar 🎚️ - May your tokens never run out.
 
+> **📌 커스텀 버전**: 이 저장소는 [steipete/CodexBar](https://github.com/steipete/CodexBar)의 포크로, 메뉴바 표시 기능이 향상되었습니다.
+> **[한국어 설치 가이드 보기 →](INSTALL_KR.md)**
+
 Tiny macOS 14+ menu bar app that keeps your Codex, Claude, Cursor, Gemini, Antigravity, Droid (Factory), Copilot, z.ai, Kiro, Vertex AI, Augment, Amp, JetBrains AI, and OpenRouter limits visible (session + weekly where available) and shows when each window resets. One status item per provider (or Merge Icons mode with a provider switcher and optional Overview tab); enable what you use from Settings. No Dock icon, minimal UI, dynamic bar icons in the menu bar.
 
 <img src="codexbar.png" alt="CodexBar menu screenshot" width="520" />
+
+## ✨ 커스텀 기능
+
+### 새로운 메뉴바 표시 모드
+- **Minimal** (기본값): `91 02:58 / 82 2:02` - 세션 & 주간 시간 간결 표시
+- **Session Detail**: `S:94% (3h 36m) W:82% (2d 21h)` - 상세 정보
+- **Compact**: `94% 3h36m | 82% 2d21h` - 간결한 형식
+- **Compact with Label**: `S 94% 3h36m W 82% 2d21h` - 라벨 포함
+
+### 개선 사항
+- 등폭 숫자 폰트 적용으로 가독성 향상
+- 13pt 크기로 통일된 텍스트 표시
 
 ## Install
 
