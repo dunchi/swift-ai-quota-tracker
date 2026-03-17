@@ -138,7 +138,7 @@ extension SettingsStore {
     }
 
     var menuBarDisplayMode: MenuBarDisplayMode {
-        get { MenuBarDisplayMode(rawValue: self.menuBarDisplayModeRaw ?? "") ?? .percent }
+        get { MenuBarDisplayMode(rawValue: self.menuBarDisplayModeRaw ?? "") ?? .minimal }
         set { self.menuBarDisplayModeRaw = newValue.rawValue }
     }
 

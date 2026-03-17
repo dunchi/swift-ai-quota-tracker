@@ -431,9 +431,24 @@ extension StatusItemController {
 
     private func setButtonTitle(_ title: String?, for button: NSStatusBarButton) {
         let value = title ?? ""
-        if button.title != value {
-            button.title = value
+
+        if !value.isEmpty {
+            // Apply monospaced digit font with size 13
+            let attributedString = NSAttributedString(
+                string: value,
+                attributes: [
+                    .font: NSFont.monospacedDigitSystemFont(ofSize: 13, weight: .regular)
+                ]
+            )
+            if button.attributedTitle != attributedString {
+                button.attributedTitle = attributedString
+            }
+        } else {
+            if button.attributedTitle.string != "" {
+                button.attributedTitle = NSAttributedString(string: "")
+            }
         }
+
         let position: NSControl.ImagePosition = value.isEmpty ? .imageOnly : .imageLeft
         if button.imagePosition != position {
             button.imagePosition = position
@@ -451,12 +466,16 @@ extension StatusItemController {
             snapshot?.secondary.flatMap { window in
                 self.store.weeklyPace(provider: provider, window: window, now: now)
             }
+        case .sessionDetail, .compact, .compactWithLabel, .minimal:
+            nil
         }
         let displayText = MenuBarDisplayText.displayText(
             mode: mode,
             percentWindow: percentWindow,
             pace: pace,
-            showUsed: self.settings.usageBarsShowUsed)
+            showUsed: self.settings.usageBarsShowUsed,
+            primary: snapshot?.primary,
+            secondary: snapshot?.secondary)
 
         let sessionExhausted = (snapshot?.primary?.remainingPercent ?? 100) <= 0
         let weeklyExhausted = (snapshot?.secondary?.remainingPercent ?? 100) <= 0
